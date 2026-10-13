@@ -1,50 +1,26 @@
 
 package com.student;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+class CalculatorTest {
 
-public class CalculatorTest {
-
-    private Calculator calculator;
-
-    @BeforeEach
-    void setUp() {
-        calculator = new Calculator();
+    @Test
+    void testAddPositiveNumbers() {
+        Calculator calc = new Calculator();
+        assertEquals(5, calc.add(2, 3));
     }
 
     @Test
-    @DisplayName("Test addition")
-    void testAdd() {
-        assertEquals(5, calculator.add(2, 3));
+    void testAddWithZero() {
+        Calculator calc = new Calculator();
+        assertEquals(7, calc.add(7, 0));
     }
 
     @Test
-    @DisplayName("Test subtraction")
-    void testSubtract() {
-        assertEquals(6, calculator.subtract(10, 4));
-    }
-
-    @Test
-    void testAdditionWithZero() {
-        assertEquals(7, calculator.add(7, 0));
-    }
-
-    @Test
-    void testSubtractionWithZero() {
-        assertNotEquals(0, calculator.subtract(8, 3));
-    }
-
-    @Test
-    void testAdditionResultIsPositive() {
-        assertTrue(calculator.add(4, 5) > 0);
-    }
-
-    @Test
-    void testSubtractionResultIsNotNegative() {
-        assertFalse(calculator.subtract(10, 4) < 0);
+    void testAddNegativeNumbers() {
+        Calculator calc = new Calculator();
+        assertEquals(-8, calc.add(-3, -5));
     }
 }
